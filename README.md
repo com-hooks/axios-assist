@@ -16,9 +16,9 @@ import {
 } from 'axios-assist';
 
 export function defineXhrRequest(axiosDefaults: CreateAxiosDefaults = {}) {
-    const instance: CAxiosInstance = axios.create(Object.assign({
+    const instance = axios.create(Object.assign({
         timeout: 10000,
-    }, axiosDefaults));
+    }, axiosDefaults)) as CAxiosInstance;
 
     /**
      * 定义一个终止器
@@ -98,9 +98,9 @@ import {
 
 export function defineXhrRequest(axiosDefaults: CreateAxiosDefaults = {}) {
 
-    const instance: CAxiosInstance = axios.create(Object.assign({
+    const instance = axios.create(Object.assign({
         timeout: 10000,
-    }, axiosDefaults));
+    }, axiosDefaults)) as CAxiosInstance;;
 
     const { refreshTokenSetup } = defineRefreshToken({
         refreshRequestCount: 1, // 允许 refresh request count
