@@ -1,0 +1,39 @@
+{
+  "name": "axios-assist",
+  "version": "0.1.0",
+  "description": "axios 节流 无感刷新 AbortController signal 无感刷新token cancelToken assist",
+  "main": "./build/index.js",
+  "scripts": {},
+  "keywords": [
+    "axios",
+    "assist",
+    "axios-assist",
+    "节流",
+    "无感刷新",
+    "AbortController",
+    "signal",
+    "无感刷新token",
+    "cancelToken",
+    "helpers"
+  ],
+  "files": [
+    "README.md",
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/com-hooks/axios-assist"
+  },
+  "homepage": "https://github.com/com-hooks/axios-assist?tab=readme-ov-file#example-code",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "mmj<840719708@qq.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.2"
+  }
+}
