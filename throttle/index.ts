@@ -111,7 +111,7 @@ export function defineAbortSignalThrottle(config: DefineConfig = {}) {
             return Promise.resolve(response);
 
         }, function (error) {
-            destroyAbortSignal(error.response.config);
+            destroyAbortSignal(error?.response?.config || error?.config || {});
             return Promise.reject(error);
         });
         // 应用所有插件

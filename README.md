@@ -1,6 +1,5 @@
 # axios 节流 无感刷新 AbortController signal 无感刷新token cancelToken assist
-## 如何在根本解决重复提交请求
-## 如何在根本上解决输入框行为结束后发送请求获取正确的数据
+## 如何在根本上解决输入框行为结束后发送请求获取正确的数据、最优避免重复提交请求
 
 ```shell
 pnpm i axios-assist
