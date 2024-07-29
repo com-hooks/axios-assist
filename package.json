@@ -1,6 +1,6 @@
 {
   "name": "axios-assist",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "axios 节流 无感刷新 AbortController signal 无感刷新token cancelToken assist",
   "main": "./build/index.js",
   "scripts": {},

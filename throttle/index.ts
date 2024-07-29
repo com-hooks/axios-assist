@@ -30,12 +30,14 @@ export function defineAbortSignalThrottle(config: DefineConfig = {}) {
     const targetMcqMap = new Map<string, number>();
 
     function batchMapDelete(key: string) {
-        const deleteMaps = [abortControllerMap, targetMcqMap]
-        deleteMaps.forEach(map => {
-            if (map.has(key)) {
-                map.delete(key);
-            }
-        });
+        if (abortControllerMap.has(key)) {
+            const controller = abortControllerMap.get(key);
+            controller!.abort();
+            abortControllerMap.delete(key);
+        }
+        if (targetMcqMap.has(key)) {
+            targetMcqMap.delete(key);
+        }
     }
 
     function throttleAbortSignal(config: CInternalAxiosRequestConfig) {
@@ -65,7 +67,7 @@ export function defineAbortSignalThrottle(config: DefineConfig = {}) {
             const currentCount = targetMcqMap.get(_key)!;
             let isMaxConcurrentQuery = currentCount >= _defineConfig.maxConcurrentQueryCount;
             let targetMcqCount = config.maxConcurrentQueryCount;
-            if(typeof targetMcqCount === 'number') {
+            if (typeof targetMcqCount === 'number') {
                 // 自身有定义则使用自身的 maxConcurrentQueryCount;
                 isMaxConcurrentQuery = currentCount >= targetMcqCount;
             }
@@ -111,7 +113,6 @@ export function defineAbortSignalThrottle(config: DefineConfig = {}) {
             return Promise.resolve(response);
 
         }, function (error) {
-            destroyAbortSignal(error?.response?.config || error?.config || {});
             return Promise.reject(error);
         });
         // 应用所有插件
